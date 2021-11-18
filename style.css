@@ -1,0 +1,59 @@
+body{
+    margin: 0;
+    padding: 0; /*hogy ne legyen az oldal körül egy fehér keret*/
+}
+
+#rss {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(147, 153, 153);
+    flex: 2; /* az aside-ban van a párja, aránypárt határoz meg: az rss 2 egység, az aside 1 egység*/
+}
+
+.article {
+    width: 33.33% /*%-ban megadva tartja az arányt, akkor is, ha összehuzom az ablakot*/
+}
+
+@media screen and (max-width: 768px) {/*768px alatt at article 33,33%ról 50%-ra ugrik*/
+    .article {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 768px) {/*768px alatt az article 33,33%ról 100%-ra ugrik, ez kb mobilos nézet*/
+    .article {
+        width: 100%;
+    }
+}
+
+#root {
+    display: flex; /*hogy egy szekcióba kerüljön a kettő */
+    flex-direction: column; /*hogy betegye felé a menüz */
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end; /*a box végére teszi a pontokat*/
+    background-color: rgb(41, 40, 40);
+    color: white;
+}
+
+
+
+
+nav ul a {
+    display: block; /*h dobozkét jelenjenek meg*/
+    padding: 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+#main {
+    display: flex /*egy új dobozt létrehoztunk (footer) és azt szeretnénk az rss-sel egymás mellé helyezni */
+}
+
+aside {
+    flex: 1; /*rss-ben van az aránypárja*/
+}

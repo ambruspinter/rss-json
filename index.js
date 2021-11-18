@@ -1,3 +1,10 @@
+function trimDOM(str) {
+  let parser = new DOMParser();
+  let doc = parser.parseFromString(str, "text/html");
+  let txt = doc.body.innerText;
+  return txt.substring(0, 255) + "..."
+}
+
 function readNews (){
    fetch("rss.json")
    .then((r) => r.json())
@@ -12,8 +19,8 @@ function renderNews(news) {
 }
 
 function renderItem(item) {
-    let box = document
-       .createElement('div');
+    let box = document.createElement('div');
+    box.className = "article"
 
     let title = document
     .createElement('h1');
@@ -24,8 +31,7 @@ function renderItem(item) {
     title
     .innerText =item.title;
 
-    desc
-    .innerText = item.summary;
+    desc.innerText = trimDOM(item.summary);
 
     box.append(title,desc);
     document
